@@ -67,7 +67,13 @@ article span{
   background-color: rgb(71, 94, 129);
 }
 #economia .articles article {
-  background-color: rgb(91, 80, 116);
+  background-color: rgb(122, 71, 129);
+}
+#educacao .articles article {
+  background-color: rgb(37, 105, 63);
+}
+#entretenimento .articles article {
+  background-color: rgb(158, 27, 22);
 }
 
 .articles article img {
