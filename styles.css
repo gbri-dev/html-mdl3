@@ -113,7 +113,7 @@ section h2 {
   padding: 13px 0;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1380px) {
   header ul {
     position: static;
     display: block;
