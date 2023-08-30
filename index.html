@@ -10,25 +10,64 @@
 </head>
 
 <body>
-  <header>
-    <h1>Exercicio Módulo 7 | Integrando HTML com JavaScript</h1>
-  </header>
 
-  <main>
-    <div class="container">
+  <div class="container">
+    <main>
       <section class="formulario">
-        <!--formulario com 2 campos numericos onde B é maior que A.-->
-        <form id="formCalc">
-          <input type="number" name="numeroA" id="numA" placeholder="Primeiro número" required>
-          <input type="number" name="numeroB" id="numB" placeholder="Segundo número" required>
-          <button type="submit" id="btn_calc">Resultado</button>
+        <h2>Contato</h2>
+        <form id="frmContato">
+          <span id="erroInput"></span>
+          <input type="text" name="nome" id="nome" placeholder="Nome completo" required>
+          <input type="email" name="email" id="email" placeholder="E-mail" required>
+          <input type="tel" name="telefone" id="telefone">
+          <input name="cpf" id="cpf" title="Número de CPF" required>
+          <input type="text" name="endereco" id="endereco" placeholder="Endereço completo">
+          <input name="cep" id="cep" title="CEP" required>
+          <button type="submit" id="btnCad">Cadastrar</button>
         </form>
       </section>
-      <div class="message-result"></div>
-    </div>
-  </main>
+    </main>
+  </div>
 
+  <script src="./jquery.min.js"></script>
+  <script src="./jquery.mask.min.js"></script>
   <script src="./scripts.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#cep').mask('00000-000', {
+        placeholder: '_____-___'
+      })
+      $('#telefone').mask('(00) 00000-0000', {
+        placeholder: '(__) ______-____'
+      })
+      $('#cpf').mask('000.000.000-00', {
+        placeholder: '___.___.___-__'
+      })
+
+      const inputNome = document.getElementById('nome');
+      const buttonEnviar = document.getElementById('frmCad')
+      inputNome.addEventListener('keyup', function () {
+        let nomeCompleto = inputNome.value.split(' ');
+        if (nomeCompleto.length > 1 && nomeCompleto[0].length >= 3 && nomeCompleto[1].length >= 3) {
+          inputNome.style.color = 'black';
+          $('#erroInput').text('')
+        } else {
+          $('#erroInput').text('Digite o nome completo')
+          inputNome.style.color = 'red';
+        }
+      });
+            
+      buttonEnviar.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let nomeCompleto = inputNome.value.split(' ');
+        if (nomeCompleto.length <= 1 || nomeCompleto[0].length < 3 || nomeCompleto[1].length < 3) {
+          e.preventDefault();
+          alert("Por favor, digite o nome completo");
+        }
+      })
+
+    }) 
+  </script>
 </body>
 
 </html>
