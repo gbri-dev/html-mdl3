@@ -1,0 +1,1 @@
+npm run sass .\src\styles\main.scss .\src\styles\main.css
